@@ -1,4 +1,4 @@
-import WalletConnect from "@/components/WalletConnect";
+import WalletConnect from "@/app/components/walletconnect";
 
 export default function Home() {
   return (
