@@ -1,0 +1,45 @@
+{
+    "version": "0.1.0",
+    "name": "token_transfer",
+    "instructions": [
+      {
+        "name": "sendToken",
+        "accounts": [
+          {
+            "name": "from",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "recipient",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true
+          },
+          {
+            "name": "mint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "address": "4jcbcXzbNT4c6x3tKCxssE58K8kEJhJ49VCGu7w1WQ7V"
+    }
+  }

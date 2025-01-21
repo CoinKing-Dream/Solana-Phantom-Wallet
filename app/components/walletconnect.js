@@ -1,22 +1,25 @@
+'use client'
+
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
 import { useConnection, useWallet } from "@solana/wallet-adapter-react"
 import { useEffect } from "react";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { useAtom } from "jotai";
 import { solBalance } from "@/app/store";
+import Action from "@/app/components/action"
 
 export default function WalletConnect() {
     const { connection } = useConnection();
     const { publicKey } = useWallet();
-    const [solanaBalance, setSolanaBalance] = useAtom(solBalance);
+    const [, setSolanaBalance] = useAtom(solBalance);
 
     useEffect(() => {
         if (!publicKey) return;
-        connection.getBalance(publicKey).then(balance => {
+        connection.getBalance(publicKey).then((balance) => {
             setSolanaBalance(balance / LAMPORTS_PER_SOL);
         });
-    }, [publicKey, connection]);
-    
+    }, [publicKey, connection, setSolanaBalance]);
+
     return (
         <>
             <div className="flex flex-col justify-center items-center">
@@ -28,7 +31,12 @@ export default function WalletConnect() {
                         transition: 'all 0.2s ease-in-out',
                     }} />
                 <div>
-                    {solanaBalance}
+                    {
+                        publicKey ? <Action /> :
+                            <>
+                                <div>Connect Wallet</div>
+                            </>
+                    }
                 </div>
             </div>
         </>
