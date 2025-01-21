@@ -15,6 +15,8 @@ const action = () => {
             console.error("Invalid");
             return;
         }
+        console.log("asdf", wallet);
+        
         const result = sendingToken(connection, wallet);
         console.log(result);
     }
